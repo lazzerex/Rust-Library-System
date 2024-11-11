@@ -1,0 +1,33 @@
+[package]
+name = "library_system"
+version = "0.1.0"
+edition = "2021"
+authors = ["lazzerex"]
+description = "A library management system written in Rust"
+
+[dependencies]
+time = { version = "0.3", features = ["std"] }
+
+[dev-dependencies]
+#property-based testing
+quickcheck = "1.0"
+quickcheck_macros = "1.0"
+
+#benchmarking
+criterion = "0.4"
+
+#async testing
+tokio = { version = "1.0", features = ["full", "test-util"] }
+
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[profile.release]
+opt-level = 3
+debug = false
+strip = true 
+lto = true
+codegen-units = 1
+panic = 'abort'
